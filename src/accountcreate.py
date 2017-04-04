@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import StaleElementReferenceException, TimeoutException
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from cgi import escape
 from pikaptcha.jibber import *
 from pikaptcha.ptcexceptions import *
 from pikaptcha.url import *
@@ -120,11 +121,9 @@ def create_account(username, password, email, birthday, captchakey2, captchatime
         gkey_index = html_source.find("https://www.google.com/recaptcha/api2/anchor?k=") + 47
         gkey = html_source[gkey_index:gkey_index + 40]
         recaptcharesponse = "Failed"
-        url="http://club.pokemon.com"
+        url=escape(driver.current_url)
         while (recaptcharesponse == "Failed"):
-            recaptcharesponse = openurl(
-                "http://2captcha.com/in.php?key=" + captchakey2 + "&method=userrecaptcha&googlekey=" + gkey)
-            "http://2captcha.com/in.php?key={}&method=userrecaptcha&googlekey={}&pageurl={}".format(captchakey2,gkey,url)
+            recaptcharesponse = openurl("http://2captcha.com/in.php?key={}&method=userrecaptcha&googlekey={}&pageurl={}".format(captchakey2,gkey,url))
         captchaid = recaptcharesponse[3:]
         recaptcharesponse = "CAPCHA_NOT_READY"
         elem = driver.find_element_by_class_name("g-recaptcha")
