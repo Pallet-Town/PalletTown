@@ -91,7 +91,7 @@ You can find the .jar file here [Releases](https://github.com/novskey/PalletTown
 
 If you click the advanced settings button a new window will open which contains a live log.
 Additionally, a pallettown.log file is created in the same directory as the .jar with detailed logging of the account creation process.
-###<a name="linux-install"></a> Linux
+### <a name="linux-install"></a> Linux
 
 Tested on Ubuntu 16.04
 
